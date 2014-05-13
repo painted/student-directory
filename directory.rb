@@ -19,3 +19,6 @@ puts "Sasha Cooper"
 puts "Nicolai DTH"
 puts "Nadav Matalon"
 puts "Fitsum Teklehaimanot"
+print "Overall, we have "
+print 19
+puts " great students"
