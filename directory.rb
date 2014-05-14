@@ -1,3 +1,5 @@
+require 'debugger'
+
 @students = []
 
 def interactive_menu
@@ -62,10 +64,20 @@ puts "----------------"
 end
 
 def print_students_list(students)
-	students.each_with_index do |student, index|
-	puts "#{index}: #{student[:name]} (#{student[:cohort]} cohort)"
+	students.each do |student|
+		if lessThan12? student[:name]
+			puts "#{student[:name]} (#{student[:cohort]} cohort)"
+		end
 	end
 end
+
+def lessThan12? str
+	str.length <= 12
+end
+
+def firstCharacterA? str
+  str.chr == "A"
+end 
 #finally, we print the total
 
 def print_footer(students)
