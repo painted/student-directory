@@ -73,7 +73,7 @@ puts "Overall, we have #{students.length} great students"
 end
 
 def save_students(students)
-	file = File.open("students.csv", "w")
+	file = File.open("students.csv", "a")
 	students.each do |student|
 		student_data = [student[:name], student[:cohort]]
 		csv_line = student_data.join(",")
