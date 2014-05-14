@@ -30,10 +30,6 @@ def print_menu
 	puts "9. Save and Exit" #9 because we will add more options
 end
 
-def process(selection)
-
-end
-
 def show_students(students)
 	print_header
 	print_students_list(students)
@@ -44,15 +40,16 @@ def input_students
 	students = []
 	puts "Please enter the names of the students"
 	puts "To finish, just hit return twice"
-	# create an empty array
-	# get the first name
 	name = gets.chomp
-	# while the name is not empty, repeat this code
 	while !name.empty? do
-		#add the student hash to the array
-		students << {:name => name, :cohort => :may}
+		puts "What are your hobbies?"
+		hobbies = gets.chomp
+		puts "What is your email address"
+		email = gets.chomp
+		puts "What cohort are you in?"
+		cohort = gets.chomp
+		students << {:name => name, :hobbies => hobbies, :email => email, :cohort => cohort}
 		puts "Now we have #{students.length} students"
-		# get another name from the user
 		name = gets.chomp
 	end
 	students
@@ -64,10 +61,10 @@ puts "----------------"
 end
 
 def print_students_list(students)
-	students.each do |student|
-		if lessThan12? student[:name]
-			puts "#{student[:name]} (#{student[:cohort]} cohort)"
-		end
+	students.each do |student, hobbies, email, cohort|
+	#	if lessThan12? student[:name]
+			puts "#{student[:name]}, #{student[:hobbies]}, #{student[:email]}, (#{student[:cohort]} cohort)"
+	#	end
 	end
 end
 
@@ -87,7 +84,7 @@ end
 def save_students(students)
 	file = File.open("students.csv", "a")
 	students.each do |student|
-		student_data = [student[:name], student[:cohort]]
+		student_data = [student[:name], student[:hobbies], student[:email], student[:cohort]]
 		csv_line = student_data.join(",")
 		file.puts csv_line
 	end
