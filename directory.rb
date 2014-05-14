@@ -62,8 +62,8 @@ puts "----------------"
 end
 
 def print_students_list(students)
-	students.each do |student|
-	puts "#{student[:name]} (#{student[:cohort]} cohort)"
+	students.each_with_index do |student, index|
+	puts "#{index}: #{student[:name]} (#{student[:cohort]} cohort)"
 	end
 end
 #finally, we print the total
