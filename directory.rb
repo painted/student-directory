@@ -6,34 +6,40 @@ def interactive_menu
 	students = []
 	loop do
 		print_menu
-		selection = gets.chomp
-		case  selection
+		process(gets.chomp)
+	end
+end
+
+def process(selection)
+			case  selection
 			when "1"
 			students = input_students
 			when "2"
-			show_students(students)
+			show_students
 			when "3"
-			save_students(students)
+			save_students
+			when "4"
+			load_students
 			when "9"
-			save_students(students)
+			save_students
 			exit
 			else
 			puts "I don't know what you meant, try again"
 		end
-	end
 end
 
 def print_menu
 	puts "1. Input the students"
 	puts "2. Show the students"
 	puts "3. Save the students"
+	puts "4. Load the list from students.csv"
 	puts "9. Save and Exit" #9 because we will add more options
 end
 
-def show_students(students)
+def show_students
 	print_header
-	print_students_list(students)
-	print_footer(students)
+	print_students_list
+	print_footer
 end
 
 def input_students
@@ -48,11 +54,10 @@ def input_students
 		email = gets.chomp
 		puts "What cohort are you in?"
 		cohort = gets.chomp
-		students << {:name => name, :hobbies => hobbies, :email => email, :cohort => cohort}
+		add_student(name, hobbies, email, cohort)
 		puts "Now we have #{students.length} students"
 		name = gets.chomp
 	end
-	students
 end
 
 def print_header
@@ -60,9 +65,11 @@ puts "The students of my cohort at Makers Academy"
 puts "----------------"
 end
 
-def print_students_list(students)
-	students.each do |student, hobbies, email, cohort|
+def print_students_list
+	@students.each do |student, hobbies, email, cohort|
+	#   if firstCharacterA? student[:name]
 	#	if lessThan12? student[:name]
+	#
 			puts "#{student[:name]}, #{student[:hobbies]}, #{student[:email]}, (#{student[:cohort]} cohort)"
 	#	end
 	end
@@ -77,18 +84,31 @@ def firstCharacterA? str
 end 
 #finally, we print the total
 
-def print_footer(students)
-puts "Overall, we have #{students.length} great students"
+def print_footer
+puts "Overall, we have #{@students.length} great students"
 end
 
-def save_students(students)
-	file = File.open("students.csv", "a")
-	students.each do |student|
+def save_students
+	file = File.open("students.csv", "w")
+	@students.each do |student|
 		student_data = [student[:name], student[:hobbies], student[:email], student[:cohort]]
 		csv_line = student_data.join(",")
 		file.puts csv_line
 	end
 	file.close
+end
+
+def load_students
+	file = File.open("students.csv", "r")
+	file.readlines.each do |line|
+		name, hobbies, email, cohort = line.chomp.split(',')
+		add_student(name, hobbies, email, cohort)
+	end
+file.close
+end
+
+def add_student(name, hobbies, email, cohort)
+	@students << {:name => name, :hobbies => hobbies, :email => email, :cohort => cohort}
 end
 
 interactive_menu
