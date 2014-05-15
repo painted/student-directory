@@ -42,7 +42,7 @@ def show_students
 	print_footer
 end
 
-def input_students()
+def input_students
 	students = []
 	puts "Please enter the names of the students"
 	puts "To finish, just hit return twice"
@@ -58,8 +58,13 @@ def input_students()
 		cohort = STDIN.gets.chomp
 		cohort = "May 2014" if cohort.empty?
 		add_student(name, hobbies, email, cohort)
-		puts "Now we have #{@students.length} students"
+		if @students.length == 1
+			puts "Now we have #{@students.length} student"
+		else
+			puts "Now we have #{@students.length} students"
+		end
 		name = STDIN.gets.chomp
+
 	end
 end
 
