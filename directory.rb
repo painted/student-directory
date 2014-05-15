@@ -42,7 +42,7 @@ def show_students
 	print_footer
 end
 
-def input_students
+def input_students()
 	students = []
 	puts "Please enter the names of the students"
 	puts "To finish, just hit return twice"
@@ -50,12 +50,15 @@ def input_students
 	while !name.empty? do
 		puts "What are your hobbies?"
 		hobbies = STDIN.gets.chomp
+		hobbies = 'coding' if hobbies.empty?
 		puts "What is your email address"
 		email = STDIN.gets.chomp
+		email = "NA" if email.empty?
 		puts "What cohort are you in?"
 		cohort = STDIN.gets.chomp
+		cohort = "May 2014" if cohort.empty?
 		add_student(name, hobbies, email, cohort)
-		puts "Now we have #{students.length} students"
+		puts "Now we have #{@students.length} students"
 		name = STDIN.gets.chomp
 	end
 end
