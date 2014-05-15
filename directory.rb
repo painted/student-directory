@@ -61,8 +61,8 @@ def input_students
 end
 
 def print_header
-puts "The students of my cohort at Makers Academy"
-puts "----------------"
+puts "The students of my cohort at Makers Academy".center(100)
+puts "-------------------------------------------".center(100)
 end
 
 def print_students_list
@@ -70,7 +70,7 @@ def print_students_list
 	#   if firstCharacterA? student[:name]
 	#	if lessThan12? student[:name]
 	#
-			puts "#{student[:name]}, #{student[:hobbies]}, #{student[:email]}, (#{student[:cohort]} cohort)"
+			puts "#{student[:name]}, #{student[:hobbies]}, #{student[:email]}, (#{student[:cohort]} cohort)".center(100)
 	#	end
 	end
 end
@@ -85,11 +85,11 @@ end
 #finally, we print the total
 
 def print_footer
-puts "Overall, we have #{@students.length} great students"
+puts "Overall, we have #{@students.length} great students".center(100)
 end
 
 def save_students
-	file = File.open("students.csv", "a")
+	file = File.open("students.csv", "w")
 	@students.each do |student|
 		student_data = [student[:name], student[:hobbies], student[:email], student[:cohort]]
 		csv_line = student_data.join(",")
