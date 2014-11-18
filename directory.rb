@@ -1,5 +1,3 @@
-require 'debugger'
-
 @students = []
 
 def interactive_menu
