@@ -8,11 +8,11 @@ the list of students enrolled on the course at
 How to use
 ----------
 
-'''
+```
 git clone https://github.com/painted/student-directory
 cd student-directory
 ruby directory.rb
-'''
+```
 ====================
 
 ###The programming languages and technologies I used are:
