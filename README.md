@@ -3,7 +3,7 @@ Student Directory
 
 The student directory script allows you to manage
 the list of students enrolled on the course at
-[Makers Academy].
+[Makers Academy].  This was built in my first week at the course.
 
 How to use
 ----------
